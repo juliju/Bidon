@@ -2,14 +2,14 @@
 $sonic_pi = self
 
 class DureeMusicale
-  @@duree
+  @duree
 
   def initialize (duree)
-    @@duree = duree
+    @duree = duree
     @sonic_pi =$sonic_pi
   end
   def play()
-    @sonic_pi.sleep @@duree.get()
+    @sonic_pi.sleep @duree.get()
   end
 end
 
@@ -111,7 +111,7 @@ class JoueurToto < Joueur
 
   def joue(composition_musicale)
     @sonic_pi.with_synth :pulse do
-      @sonic_pi.with_bpm 200 do
+      @sonic_pi.with_bpm 100 do
         @sonic_pi.with_fx :level do
           composition_musicale.play()
     end
@@ -138,7 +138,7 @@ end
 
 
 
-base_unit = 2
+base_unit = 2.0
 duree = Duree.new(base_unit)
 
 accord = Accord.new(duree, :c4,:g4)
@@ -155,8 +155,8 @@ composition_musicale = CompositionMusicale.new(melody, melody2)
 joueur = JoueurToto.new()
 joueur.joue composition_musicale
 sleep 1
-joueurTata = JoueurTata.new()
-joueurTata.joue composition_musicale
+# joueurTata = JoueurTata.new()
+# joueurTata.joue composition_musicale
 
 
 
