@@ -12,30 +12,27 @@ doublecroche = ronde / 16.0
 
 accord = [:c4,:g4] 
 noteB5 = [:b5]
-noteE6=[:e6]
-silence= [:rest]
-accordSilence = ronde
-noteB5Silence = croche
-noteE6Silence = blanche
-silenceSilence = noire
+noteE6 =[:e6]
+silence = :rest
 
-silence = [noteB5Silence,noteE6Silence, silenceSilence, accordSilence]
-silence2 = [silenceSilence,accordSilence,noteB5Silence, noteE6Silence]
-melody  = [noteB5,noteE6, silence, accord]
-melody2 = [silence,accord,noteB5, noteE6]
+melody  = [[noteB5,croche], [noteE6,blanche], [silence,noire], [accord,ronde]]
+melody2 = [[silence,noire],[accord,ronde],[noteB5,croche], [noteE6,blanche]]
 
 in_thread do
-  for i in 0 ... melody.size
-    play melody[i]
-    sleep silence[i]
+  with_fx :level do
+    for i in 0 ... melody.size
+      play melody[i][0]
+      sleep melody[i][1]
+    end
   end
 end
 
+
 in_thread do
-  
-  for i in 0 ... melody.size
-    play melody2[i]
-    sleep silence2[i]
-  end
-  
+    with_fx :level do
+      for i in 0 ... melody2.size
+        play melody2[i][0]
+        sleep melody2[i][1]
+      end
+    end
 end
