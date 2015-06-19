@@ -1,0 +1,40 @@
+# LSP 2
+
+class Instrument
+  def initialize (sonic_pi)
+    @sonic_pi = sonic_pi
+  end
+
+  def play (arrayOfNotes, arrayOfTime)
+    @sonic_pi.play_pattern_timed arrayOfNotes , arrayOfTime
+  end 
+end
+
+
+
+
+class Pulse < Instrument
+  def initialize (sonic_pi)
+    super(sonic_pi)
+  end
+  
+  def play (arrayOfNotes, arrayOfTime)
+    @sonic_pi.use_synth :pulse
+    @sonic_pi.with_transpose 3 do 
+      super arrayOfNotes, arrayOfTime
+    end
+  end 
+
+  def playChord(arrayOfNotes)
+    @sonic_pi.play_chord arrayOfNotes
+  end
+  
+end
+
+use_bpm 100
+
+son = Instrument.new(self);#
+ son = Pulse.new(self)
+ #son.play([:A4,:bb4,:b4,:C5],0.25)
+ son.play([:A4,:bb4,:b4,:C5], 0.41) 
+ sleep 1

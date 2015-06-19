@@ -1,0 +1,48 @@
+# H?ritage polymorphisme fin
+
+class Instrument
+  def initialize (sonic_pi , synth = :beep)
+    @sonic_pi = sonic_pi
+    @synth = synth
+  end
+  
+
+  def play (arrayOfNotes, arrayOfTime)
+    @sonic_pi.with_synth @synth do 
+      @sonic_pi.play_pattern_timed arrayOfNotes , arrayOfTime
+    end
+  end 
+end
+
+
+class Saw < Instrument
+  def initialize (sonic_pi)
+     super(sonic_pi, :saw)
+  end
+  
+  def play (arrayOfNotes, arrayOfTime)
+    super arrayOfNotes , arrayOfTime
+  end
+end
+
+class Pulse < Instrument
+
+  def initialize (sonic_pi)
+    super(sonic_pi,:pulse)
+   # @synth = :pulse
+  end
+  
+  def play (arrayOfNotes, arrayOfTime)
+    @sonic_pi.with_transpose 3 do
+      super arrayOfNotes , arrayOfTime
+    end
+  end
+  
+end
+
+instruments = [Instrument.new(self), Saw.new(self), Pulse.new(self)]
+  instruments.each do |i|
+    # i.play([:fs4,:e4,:d4,:cs4,:b3,:a3,:b3,:cs4,:d4,:cs4,:b3,:a3,:g3,:fs3,:g3,:a3], [1])
+    i.play([:A4,:bb4,:b4,:C5],[0.25])
+    sleep 2
+  end

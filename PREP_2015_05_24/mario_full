@@ -1,0 +1,305 @@
+# Mario theme transcribed from the MML notation here: http://www.mmlshare.com/tracks/view/403
+use_bpm 100
+
+in_thread(name: :pulse_A) do
+  use_synth :pulse
+  use_synth_defaults release: 0.2, mod_rate: 5
+
+  play_pattern_timed([:e5,:e5,nil,:e5,nil,:c5,:e5,nil,
+                      :g5,nil,nil,nil,nil,nil,nil,nil], [0.25])
+
+  2.times {
+    play_pattern_timed([:c5,nil,nil,:g4,nil,nil,:e4,nil,
+                        nil,:a4,nil,:b4,nil,:Bb4,:a4,nil], [0.25])
+    play_pattern_timed([:g4,:e5,:g5], [1/3.0]) # minim triplets
+    play_pattern_timed([:a5,nil,:f5,:g5,
+                        nil,:e5,nil,:c5,
+                        :d5,:b4,nil,nil], [0.25]) }
+  2.times {
+    play_pattern_timed([nil,nil,:g5,:fs5,:f5,:ds5,nil,:e5,
+                        nil,:gs4,:a4,:c5,nil,:a4,:c5,:d5,
+                        nil,nil,:g5,:fs5,:f5,:ds5,nil,:e5,
+                        nil,:c6,nil,:c6,:c6,nil,nil,nil,
+                        nil,nil,:g5,:fs5,:f5,:ds5,nil,:e5,
+                        nil,:gs4,:a4,:c5,nil,:a4,:c5,:d5,
+                        nil,nil,:ds5,nil,nil,:d5,nil,nil,
+                        :c5,nil,nil,nil,nil,nil,nil,nil], [0.25])}
+
+  play_pattern_timed([:c5,:c5,nil,:c5,nil,:c5,:d5,nil,
+                      :e5,:c5,nil,:a4,:g4,nil,nil,nil,
+                      :c5,:c5,nil,:c5,nil,:c5,:d5,:e5,
+                      nil,nil,nil,nil,nil,nil,nil,nil,
+                      :c5,:c5,nil,:c5,nil,:c5,:d5,nil,
+                      :e5,:c5,nil,:a4,:g4,nil,nil,nil,
+                      :e5,:e5,nil,:e5,nil,:c5,:e5,nil,
+                      :g5,nil,nil,nil,nil,nil,nil,nil], [0.25])
+
+  2.times {
+    play_pattern_timed([:c5,nil,nil,:g4,nil,nil,:e4,nil,
+                        nil,:a4,nil,:b4,nil,:Bb4,:a4,nil], [0.25])
+    play_pattern_timed([:g4,:e5,:g5], [1/3.0]) # minim triplets
+    play_pattern_timed([:a5,nil,:f5,:g5,
+                        nil,:e5,nil,:c5,
+                        :d5,:b4,nil,nil], [0.25]) }
+
+  2.times {
+    play_pattern_timed([:e5,:c5,nil,:g4,nil,nil,:gs4,nil,
+                        :a4,:f5,nil,:f5,:a4,nil,nil,nil], [0.25])
+    play_pattern_timed([:b4,:a5,:a5,
+                        :a5,:g5,:f5], [1/3.0]) # minim triplets
+    play_pattern_timed([:e5,:c5,nil,:a4,:g4,nil,nil,nil], [0.25])
+    play_pattern_timed([:e5,:c5,nil,:g4,nil,nil,:gs4,nil,
+                        :a4,:f5,nil,:f5,:a4,nil,nil,nil,
+                        :b4,:f5,nil,:f5], [0.25])
+    play_pattern_timed([:f5,:e5,:d5], [1/3.0]) # minim triplets
+    play_pattern_timed([:g4,:e4,nil,:e4,:c4,nil,nil,nil], [0.25]) }
+
+  play_pattern_timed([:c5,:c5,nil,:c5,nil,:c5,:d5,nil,
+                    :e5,:c5,nil,:a4,:g4,nil,nil,nil,
+                    :c5,:c5,nil,:c5,nil,:c5,:d5,:e5,
+                    nil,nil,nil,nil,nil,nil,nil,nil,
+                    :c5,:c5,nil,:c5,nil,:c5,:d5,nil,
+                    :e5,:c5,nil,:a4,:g4,nil,nil,nil,
+                    :e5,:e5,nil,:e5,nil,:c5,:e5,nil,
+                    :g5,nil,nil,nil,nil,nil,nil,nil], [0.25])
+
+  play_pattern_timed([:e5,:c5,nil,:g4,nil,nil,:gs4,nil,
+                      :a4,:f5,nil,:f5,:a4,nil,nil,nil], [0.25])
+  play_pattern_timed([:b4,:a5,:a5,
+                      :a5,:g5,:f5], [1/3.0]) # minim triplets
+  play_pattern_timed([:e5,:c5,nil,:a4,:g4,nil,nil,nil], [0.25])
+  play_pattern_timed([:e5,:c5,nil,:g4,nil,nil,:gs4,nil,
+                      :a4,:f5,nil,:f5,:a4,nil,nil,nil,
+                      :b4,:f5,nil,:f5], [0.25])
+  play_pattern_timed([:f5,:e5,:d5], [1/3.0]) # minim triplets
+  play_pattern_timed([:g4,:e4,nil,:e4,:c4,nil,nil,nil], [0.25])
+end
+
+in_thread(name: :pulse_B) do
+  use_synth :pulse_s
+  use_synth_defaults release: 0.2, mod_rate: 5
+
+  play_pattern_timed([:fs4,:fs4,nil,:fs4,nil,:fs4,:fs4,nil,
+                      :b4,nil,nil,nil,:g4,nil,nil,nil], [0.25])
+
+  # B L [e w4 c w4 <g w4 >c w d w c+ c w c6 g6 b6 >c w <a b w a w e f d w4]2
+  # B [w4 >e d+ d <b w >c w <e f g w c e f w4 >e d+ d <b w >c w f w f f w4 w w4 e d+ d <b w >c w <e f g w c e f w4 g+ w4 f w4 e w4 w w2]2
+  # B g+ g+ w g+ w g+ a+ w g e w e c w4 w g+ g+ w g+ w g+ a+ g w2 w2 g+ g+ w g+ w g+ a+ w g e w e c w4 w f+ f+ w f+ w f+ f+ w b w w4 g w w4
+  2.times {
+    play_pattern_timed([:e4,nil,nil,:c4,nil,nil,:g3,nil,
+                        nil,:c4,nil,:d4,nil,:Db4,:c4,nil], [0.25])
+    play_pattern_timed([:c4,:g4,:b4], [1/3.0])
+    play_pattern_timed([:c5,nil,:a4,:b4,
+                        nil,:a4,nil,:e4,
+                        :f4,:d4,nil,nil], [0.25])
+  }
+  2.times {
+    play_pattern_timed([nil,nil,:e5,:ds5,:d5,:b4,nil,:c5,
+                        nil,:e4,:f4,:g4,nil,:c4,:e4,:f4,
+                        nil,nil,:e5,:ds5,:d5,:b4,nil,:c5,
+                        nil,:f5,nil,:f5,:f5,nil,nil,nil,
+                        nil,nil,:e5,:ds5,:d5,:b4,nil,:c5,
+                        nil,:e4,:f4,:g4,nil,:c4,:e4,:f4,
+                        nil,nil,:gs4,nil,nil,:f4,nil,nil,
+                        :e4,nil,nil,nil,nil,nil,nil,nil], [0.25])}
+
+  play_pattern_timed([:gs4,:gs4,nil,:gs4,nil,:gs4,:as4,nil,
+                      :g4,:e4,nil,:e4,:c4,nil,nil,nil,
+                      :gs4,:gs4,nil,:gs4,nil,:gs4,:as4,:g4,
+                      nil,nil,nil,nil,nil,nil,nil,nil,
+                      :gs4,:gs4,nil,:gs4,nil,:gs4,:as4,nil,
+                      :g4,:e4,nil,:e4,:c4,nil,nil,nil,
+                      :fs4,:fs4,nil,:fs4,nil,:fs4,:fs4,nil,
+                      :b4,nil,nil,nil,:g4,nil,nil,nil], [0.25])
+
+  2.times {
+    play_pattern_timed([:e4,nil,nil,:c4,nil,nil,:g3,nil,
+                        nil,:c4,nil,:d4,nil,:Db4,:c4,nil], [0.25])
+    play_pattern_timed([:c4,:g4,:b4], [1/3.0])
+    play_pattern_timed([:c5,nil,:a4,:b4,
+                        nil,:a4,nil,:e4,
+                        :f4,:d4,nil,nil], [0.25])
+  }
+
+  2.times {
+    play_pattern_timed([:c5,:a4,nil,:e4,nil,nil,:e4,nil,
+                        :f4,:c5,nil,:c5,:f4,nil,nil,nil], [0.25])
+    play_pattern_timed([:g4,:f5,:f5,
+                        :f5,:e5,:d5], [1/3.0]) # minim triplets
+    play_pattern_timed([:c5,:a4,nil,:f4,:e4,nil,nil,nil], [0.25])
+    play_pattern_timed([:c5,:a4,nil,:e4,nil,nil,:e4,nil,
+                        :f4,:c5,nil,:c5,:f4,nil,nil,nil,
+                        :g4,:d5,nil,:d5], [0.25])
+    play_pattern_timed([:d5,:c5,:b4], [1/3.0]) # minim triplets
+    play_pattern_timed([:c5,nil,nil,nil,nil,nil,nil,nil], [0.25]) }
+
+  play_pattern_timed([:gs4,:gs4,nil,:gs4,nil,:gs4,:as4,nil,
+                      :g4,:e4,nil,:e4,:c4,nil,nil,nil,
+                      :gs4,:gs4,nil,:gs4,nil,:gs4,:as4,:g4,
+                      nil,nil,nil,nil,nil,nil,nil,nil,
+                      :gs4,:gs4,nil,:gs4,nil,:gs4,:as4,nil,
+                      :g4,:e4,nil,:e4,:c4,nil,nil,nil,
+                      :fs4,:fs4,nil,:fs4,nil,:fs4,:fs4,nil,
+                      :b4,nil,nil,nil,:g4,nil,nil,nil], [0.25])
+
+  play_pattern_timed([:c5,:a4,nil,:e4,nil,nil,:e4,nil,
+                      :f4,:c5,nil,:c5,:f4,nil,nil,nil], [0.25])
+  play_pattern_timed([:g4,:f5,:f5,
+                      :f5,:e5,:d5], [1/3.0]) # minim triplets
+  play_pattern_timed([:c5,:a4,nil,:f4,:e4,nil,nil,nil], [0.25])
+  play_pattern_timed([:c5,:a4,nil,:e4,nil,nil,:e4,nil,
+                      :f4,:c5,nil,:c5,:f4,nil,nil,nil,
+                      :g4,:d5,nil,:d5], [0.25])
+  play_pattern_timed([:d5,:c5,:b4], [1/3.0]) # minim triplets
+  play_pattern_timed([:c5,nil,nil,nil,nil,nil,nil,nil], [0.25]) 
+end
+
+# C d d r d r d d r >g r w4 <g r w4
+# C L [g w4 e w4 c w4 f w g w f+ f w @q4 e6 >c6 e6 @q1 f w d e w c w <a b g w4]2
+# C [c w4 g w4 >c w <f w4 >c c w <f w c w4 e w4 g >c w >g w g g w <<g w c w4 g w4 >c w <f w4 >c c w <f w c w g+ w4 a+ w4 >c w4 <g g w c w]2
+# C [<g+ w4 >d+ w4 g+ w g w4 c w4 <g w]3 >d d r d r d d r >g r w4 <g r w4
+# C [g w4 e w4 c w4 f w g w f+ f w @q4 e6 >c6 e6 @q1 f w d e w c w <a b g w4]2
+
+in_thread(name: :triangle_C) do
+  use_synth :tri_s
+
+  # intro
+  play_pattern_timed([:D4,:D4,nil,:D4,nil,:D4,:D4,nil,
+                      :G3,nil,nil,nil,:G4,nil,nil,nil], [0.25])
+
+  2.times {
+    play_pattern_timed([:G4,nil,nil,:E4,nil,nil,:C4,nil,
+                        nil,:F4,nil,:G4,nil,:Gb4,:F4,nil], [0.25])
+    play_pattern_timed([:E4,:C4,:E4], [1/3.0])
+    play_pattern_timed([:F4,nil,:D4,:E4,
+                        nil,:C4,nil,:A3,
+                        :B3,:G3,nil,nil], [0.25])
+  }
+
+  2.times {
+    play_pattern_timed([:C3,nil,nil,:G3,nil,nil,:C3,nil,
+                        :F3,nil,nil,:C3,:C3,nil,:F3,nil,
+                        :C3,nil,nil,:E3,nil,nil,:G3,:C3,
+                        nil,:G2,nil,:G2,:G2,nil,:G4,nil,
+                        :C3,nil,nil,:G3,nil,nil,:C3,nil,
+                        :F3,nil,nil,:C3,:C3,nil,:F3,nil,
+                        :C3,nil,:Ab3,nil,nil,:Bb3,nil,nil,
+                        :C3,nil,nil,:G2,:G2,nil,:C3,nil], [0.25])
+  }
+
+  3.times {
+    play_pattern_timed([:gs4,nil,nil,:ds4,nil,nil,:gs4,nil,
+                        :g4,nil,nil,:c4,nil,nil,:g4,nil], [0.25])
+  }
+  play_pattern_timed([:D4,:D4,nil,:D4,nil,:D4,:D4,nil,
+                      :G3,nil,nil,nil,:G4,nil,nil,nil], [0.25])
+
+  2.times {
+    play_pattern_timed([:G4,nil,nil,:E4,nil,nil,:C4,nil,
+                        nil,:F4,nil,:G4,nil,:Gb4,:F4,nil], [0.25])
+    play_pattern_timed([:E4,:C4,:E4], [1/3.0])
+    play_pattern_timed([:F4,nil,:D4,:E4,
+                        nil,:C4,nil,:A3,
+                        :B3,:G3,nil,nil], [0.25])
+  }
+
+  # C [c w4 f+ g w >c w <f w f w >c c <f w d w4 f g w b w g w g w >c c <g w
+  #    c w4 f+ g w >c w <f w f w >c c <f w
+  #    g w4 g @q4 g6 a6 b6 @q1 >c w <g w c w4 w]2
+  2.times {
+    play_pattern_timed([:C3,nil,nil,:fs3,:g3,nil,:C3,nil,
+                        :F3,nil,:F3,nil,:C3,:C3,:F3,nil,
+                        :D3,nil,nil,:F3,:G3,nil,:B3,nil,
+                        :G3,nil,:G3,nil,:C3,:C3,:G3,nil,
+                        :C3,nil,nil,:fs3,:g3,nil,:C3,nil,
+                        :F3,nil,:F3,nil,:C3,:C3,:F3,nil,
+                        :G3,nil,nil,:G3], [0.25])
+    play_pattern_timed([:G3,:A3,:B3], [1/3.0]) # minim triplets
+    play_pattern_timed([:C4,nil,:G3,nil,:C4,nil,nil,nil], [0.25])
+  }
+
+  3.times {
+    play_pattern_timed([:gs4,nil,nil,:ds4,nil,nil,:gs4,nil,
+                        :g4,nil,nil,:c4,nil,nil,:g4,nil], [0.25])
+  }
+  play_pattern_timed([:D4,:D4,nil,:D4,nil,:D4,:D4,nil,
+                      :G3,nil,nil,nil,:G4,nil,nil,nil], [0.25])
+
+  1.times {
+    play_pattern_timed([:C3,nil,nil,:fs3,:g3,nil,:C3,nil,
+                        :F3,nil,:F3,nil,:C3,:C3,:F3,nil,
+                        :D3,nil,nil,:F3,:G3,nil,:B3,nil,
+                        :G3,nil,:G3,nil,:C3,:C3,:G3,nil,
+                        :C3,nil,nil,:fs3,:g3,nil,:C3,nil,
+                        :F3,nil,:F3,nil,:C3,:C3,:F3,nil,
+                        :G3,nil,nil,:G3], [0.25])
+    play_pattern_timed([:G3,:A3,:B3], [1/3.0]) # minim triplets
+    play_pattern_timed([:C4,nil,:G3,nil,:C4,nil,nil,nil], [0.25])
+  }
+end
+
+in_thread(name: :noise_D) do
+  use_synth :fm
+  use_synth_defaults divisor: 1.6666, attack: 0.0, depth: 1500, sustain: 0.05, release: 0.0
+
+  define :drum_pattern_a do
+    play :a, sustain: 0.1
+    sleep 0.5
+    play :a
+    sleep 0.25
+    play :a, sustain: 0.1
+    sleep 0.5
+    play :a
+    sleep 0.25
+    play :a, sustain: 0.1
+    sleep 0.5
+    play :a, sustain: 0.1
+    sleep 0.75
+    play :a, sustain: 0.1
+    sleep 0.5
+    play :a
+    sleep 0.25
+    play :a
+    sleep 0.25
+    play :a
+    sleep 0.25
+  end
+
+  define :drum_pattern_b do
+    # D L [@v1 b w d6 d12 @v2 d w @v1 d6 d12 ]24
+    play :b
+    sleep 0.5
+    play :a6
+    sleep 0.25
+    play :a7
+    sleep 0.25
+    play :a, sustain: 0.1
+    sleep 0.5
+    play :a6
+    sleep 0.25
+    play :a7
+    sleep 0.25
+  end
+
+  define :drum_pattern_c do
+    # D [@v1 d w4 d @v2 d w @v1 d w]16
+    play :a
+    sleep 0.75
+    play :a
+    sleep 0.25
+    play :a, sustain: 0.1
+    sleep 0.5
+    play :a
+    sleep 0.5
+  end
+
+  with_fx :level, amp: 0.6 do
+    1.times  { drum_pattern_a }
+    24.times { drum_pattern_b }
+    4.times  { drum_pattern_a }
+    8.times  { drum_pattern_b }
+    16.times { drum_pattern_c }
+    4.times  { drum_pattern_a }
+    8.times  { drum_pattern_b }
+  end
+end
