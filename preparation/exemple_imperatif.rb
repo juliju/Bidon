@@ -1,7 +1,7 @@
 # Exemple 1 :code imperatif
-base_unit = 0.5
+base_unit = 4
 use_synth :tri
-use_bpm 180
+use_bpm 160
 
 
 
@@ -30,93 +30,39 @@ melody2 = [[silence,noire],[accord,ronde],[noteB5,croche], [noteE6,blanche]]
 GrandPianoRightHandScore = [
 
 #Bar 1
-
-[:C5, croche],
-
-[:D5, croche],
-
-[:Bb4, croche],
-
-[:G4, noire],
-
-[:A4, croche],
-
-[:F4, noire],
+[:C5, croche], [:D5, croche],
+[:Bb4, croche], [:G4, noire],
+[:A4, croche],[:F4, noire],
 
 #Bar 2
-
-[:C4, croche],
-
-[:D4, croche],
-
-[:Bb3, croche],
-
-[:G3, noire],
-
-[:A3, croche],
-
-[:F3, noire],
+[:C4, croche],[:D4, croche],
+[:Bb3, croche],[:G3, noire],
+[:A3, croche],[:F3, noire],
 
 #Bar 3
-
-[:C3, croche],
-
-[:D3, croche],
-
-[:Bb2, croche],
-
-[:G2,noire],
-
-[:A2, croche],
-
-[:G2, croche],
-
+[:C3, croche],[:D3, croche],
+[:Bb2, croche],[:G2,noire],
+[:A2, croche],[:G2, croche],
 [:Gb2, croche],
 
 #Bar 4
-
-[:F2, noire],
-
-[:rest, noire],
-
-[[:F4, :A3], noire],
-
-[:rest, noire],
+[:F2, noire],[:rest, noire],
+[[:F4, :A3], noire], [:rest, noire],
 
 #Bar 5
-
-[:rest, noire],
-
-[[:D3, :F3], noire],
-
-[:rest, noire],
-
-[[:D3, :Ab3], noire],
+[:rest, noire], [[:D3, :F3], noire],
+[:rest, noire],[[:D3, :Ab3], noire],
 
 #Bar 6
-
-[:rest, noire],
-
-[[:Eb3, :G3], noire],
-
-[:rest, noire],
-
-[[:D3, :F4], noire],
+[:rest, noire],[[:Eb3, :G3], noire],
+[:rest, noire],[[:D3, :F4], noire],
 
 #Bar 7
-
-[:rest, noire],
-
-[[:Bb3, :D3], noire],
-
-[:rest, noire],
-
-[[:A3, :Eb3], noire],
+[:rest, noire],[[:Bb3, :D3], noire],
+[:rest, noire],[[:A3, :Eb3], noire],
 
 #Bar 8
-
-[:rest, noire],
-[:rest, noire],
+[:rest, noire],[[:D3, :F3], noire],
 
 ]
 
@@ -124,60 +70,33 @@ GrandPianoRightHandScore = [
 GrandPianoLeftHandScore = [
 
 #Bar 1
-
 [:rest, ronde],
 
 #Bar 2
-
 [:rest, ronde],
 
 #Bar 3
-
 [:rest, ronde],
 
 #Bar 4
-
 [:rest, blanche],
-
 [:F2, noire],
-
 [:rest, noire],
 
 #Bar 5
-
-[:Bb1, noire],
-
-[:rest, noire],
-
-[:F2, noire],
-
-[:rest, noire],
+[:Bb1, noire],[:rest, noire],
+[:F2, noire],[:rest, noire],
 
 #Bar 6
-
-[:Eb2, noire],
-
-[:rest, noire],
-
-[:D2, noire],
-
-[:rest, noire],
+[:Eb2, noire],[:rest, noire],
+[:D2, noire],[:rest, noire],
 
 #Bar 7
-
-[:F2, noire],
-
-[:rest, noire],
-
-[:F2, noire],
-
-[:rest, noire],
+[:F2, noire],[:rest, noire],
+[:F2, noire],[:rest, noire],
 
 #Bar 8
-
-[:Bb1, noire],
-
-[:rest, noire],
+[:Bb1, noire],[:rest, noire],
 
 ]
 
@@ -185,72 +104,36 @@ GrandPianoLeftHandScore = [
 ClarinetScore = [
 
 #Bar 1
-
 [:rest, ronde],
 
 #Bar 2
-
 [:rest, ronde],
 
 #Bar 3
-
 [:rest, ronde],
 
 #Bar 4
-
-[:rest, blanche],
-
-[:rest, noire],
-
-[:C3, croche],
-
-[:Cs3, croche],
+[:rest, blanche],[:rest, noire],
+[:C3, croche],[:Cs3, croche],
 
 #Bar 5
 
-[:D3,croche],
-
-[:Bb3,noire],
-
-[:D3,croche],
-
-[:Bb3,noire],
-
-[:D3,croche],
-
-[:Bb3,croche + blanche],
+[:D3,croche],[:Bb3,noire],
+[:D3,croche],[:Bb3,noire],
+[:D3,croche],[:Bb3,croche + blanche],
 
 #Bar 6
-
 # Tied above [:Bb3, blanche],
-
-[:Bb3, croche],
-
-[:Bb3, croche],
-
-[:C4, croche],
-
-[:Cs4, croche],
+[:Bb3, croche],[:Bb3, croche],
+[:C4, croche],[:Cs4, croche],
 
 #Bar 7
-
-[:D4, croche],
-
-[:Bb3, croche],
-
-[:C4, croche],
-
-[:D4, noire],
-
-[:A3, croche],
-
-[:C4, noire],
+[:D4, croche],[:Bb3, croche],
+[:C4, croche],[:D4, noire],
+[:A3, croche],[:C4, noire],
 
 #Bar 8
-
-[:Bb3, blanche],
-
-[:rest, noire],
+[:Bb3, blanche],[:rest, noire],
 ]
 
 #composition = [GrandPianoRightHandScore]
@@ -263,7 +146,7 @@ composition2 = [ClarinetScore]
 def PlayMorceaux(melodie)
   for i in 0 ... melodie.size
     play melodie[i][0]
-    sleep melodie[i][1] * 10
+    sleep melodie[i][1] 
   end
 end
 def Joueur (composition)
