@@ -3,7 +3,8 @@ base_unit = 2
 use_synth :pulse
 use_bpm 100
 
-
+def Play ()
+  
 ronde = base_unit
 blanche = ronde / 2.0
 noire = ronde / 4.0
@@ -18,21 +19,21 @@ silence = :rest
 melody  = [[noteB5,croche], [noteE6,blanche], [silence,noire], [accord,ronde]]
 melody2 = [[silence,noire],[accord,ronde],[noteB5,croche], [noteE6,blanche]]
 
-in_thread do
-  with_fx :level do
-    for i in 0 ... melody.size
-      play melody[i][0]
-      sleep melody[i][1]
-    end
-  end
-end
 
 
-in_thread do
+composition = [melody, melody2]
+
+composition.collect{
+  |melodie| in_thread  do
     with_fx :level do
-      for i in 0 ... melody2.size
-        play melody2[i][0]
-        sleep melody2[i][1]
+      for i in 0 ... melodie.size
+        play melodie[i][0]
+        sleep melodie[i][1]
       end
     end
+  end
+}
+
+
+  
 end
