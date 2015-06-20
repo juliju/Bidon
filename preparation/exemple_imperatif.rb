@@ -142,33 +142,48 @@ composition = [GrandPianoRightHandScore,GrandPianoLeftHandScore]
 composition2 = [ClarinetScore]
 #ClarinetScore
 
+compositions = [[GrandPianoRightHandScore, "piano" ],[GrandPianoLeftHandScore, "piano" ],[ClarinetScore, "clarinet" ]]
+composition2 = [GrandPianoRightHandScore,GrandPianoLeftHandScore]
+composition = [ClarinetScore]
+#ClarinetScore
+comment do
+live_loop :tick do
+  sleep base_unit
+end
+end
 
-def PlayMorceaux(melodie)
+def PlayMelody(melodie)
   for i in 0 ... melodie.size
     play melodie[i][0]
     sleep melodie[i][1] 
   end
 end
-def Joueur (composition)
-  composition.collect{
-    |melodie| in_thread  do
-      with_fx :level do
-        PlayMorceaux(melodie)
-      end
-    end
-  } 
-end
-def Joueur2 (composition)
-  composition.collect{
-    |melodie| in_thread  do
-      with_synth :pulse do
-        PlayMorceaux(melodie)
-      end
-    end
-  } 
+
+def Joueur (compositions)
+  playPiano (compositions)
 end
 
 
+def playPiano (composition)
+composition.collect{
+  |melodie| in_thread  do
+    #with_fx :level do
+      with_synth :tri do
+        PlayMelody(melodie)
+      end
+    end
+  }
+end
 
-Joueur(composition)
-Joueur2(composition2)
+def playClarinet(composition)
+composition.collect{
+        |melodie| in_thread  do
+          with_synth :pulse do
+            PlayMelody(melodie)
+          end
+        end
+      } 
+end
+
+playPiano(composition2)
+playClarinet(composition)
