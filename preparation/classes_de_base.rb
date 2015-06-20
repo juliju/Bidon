@@ -155,8 +155,8 @@ composition_musicale = CompositionMusicale.new(melody, melody2)
 joueur = JoueurToto.new()
 joueur.joue composition_musicale
 sleep 1
-# joueurTata = JoueurTata.new()
-# joueurTata.joue composition_musicale
+ joueurTata = JoueurTata.new()
+ joueurTata.joue composition_musicale
 
 
 

@@ -159,12 +159,18 @@ def PlayMelody(melody)
   end
 end
 
-def Joueur (compositions)
+def JoueurAleatoire (compositions)
   for i in 0 ... compositions.size
     in_thread do
       send([:playPiano,:playClarinet].choose, compositions.shift)
     end
   end
+end
+
+def Joueur(compositions)
+  playPiano(compositions.shift)
+  playPiano(compositions.shift)
+  playClarinet(compositions.shift)
 end
 
 def playPiano (melody)
@@ -176,9 +182,32 @@ def playPiano (melody)
 end
 
 def playClarinet(melody)
-  with_synth :pulse do
+   for i in 0 ... melody.size
+    synth :fm, note:melody[i][0], amp: 0.5
+    sleep melody[i][1] 
+  end
+end
+
+def playPrettyBell(melody)
+ for i in 0 ... melody.size
+    duree = melody[i][1] 
+    tonalite = melody[i][0]
+    with_synth :pretty_bell do
+      with_fx :wobble do
+        play tonalite, attack: 0.01 , decay: 0, sustain: 0.1 * duree, 
+          release: 0.9*duree-0.01, amp: 1
+        sleep duree
+      end
+    end
+  end
+end
+
+def playCnoise(melody)
+ with_synth :cnoise do
     PlayMelody(melody)
   end
 end
 
-Joueur(compositions)
+
+playPrettyBell(GrandPianoRightHandScore)
+#Joueur(compositions)
