@@ -160,14 +160,10 @@ def PlayMelody(melody)
 end
 
 def Joueur (compositions)
-  in_thread  do
-    playPiano(compositions[0])
-  end
-  in_thread  do
-    playPiano(compositions[1])
-  end
-  in_thread  do
-    playClarinet(compositions[2])
+  for i in 0 ... compositions.size
+    in_thread do
+      send([:playPiano,:playClarinet].choose, compositions.shift)
+    end
   end
 end
 
