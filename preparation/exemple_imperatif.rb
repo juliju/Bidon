@@ -203,11 +203,20 @@ def playPrettyBell(melody)
 end
 
 def playCnoise(melody)
- with_synth :cnoise do
-    PlayMelody(melody)
+for i in 0 ... melody.size
+    duree = melody[i][1] 
+    tonalite = melody[i][0]
+    with_synth :cnoise do
+      with_fx :reverb, mix: 0.2 do
+        with_fx :echo, mix: 0.02 do
+          play tonalite, attack: 0, decay: 0, sustain: 0, release: 0.1+(duree/10), amp: rand
+          sleep duree
+        end
+      end
+    end
   end
 end
 
 
-playPrettyBell(GrandPianoRightHandScore)
+playCnoise(GrandPianoRightHandScore)
 #Joueur(compositions)
