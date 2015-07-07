@@ -11,7 +11,7 @@ noire = ronde / 4.0
 croche = ronde / 8.0
 doublecroche = ronde / 16.0
 
-accord = [:c4,:g4] 
+accord = [:c4,:g4]
 noteB5 = [:b5]
 noteE6 =[:e6]
 silence = :rest
@@ -20,7 +20,7 @@ melody  = [[noteB5,croche], [noteE6,blanche], [silence,noire], [accord,ronde]]
 melody2 = [[silence,noire],[accord,ronde],[noteB5,croche], [noteE6,blanche]]
 
 
-# piano_main_droite = [:C5,:D5,:Bb4,:G4,:A4,:F4, 
+# piano_main_droite = [:C5,:D5,:Bb4,:G4,:A4,:F4,
 #   :C4, :D4, :Bb3,:G3,:A3, :F3,
 #   :C3,:D3, :Bb2,:G2,:Gb2,:F2,:rest,[:F4, :A3],:rest,
 #   :rest,[:D3, :F3],:rest,:D3, :Ab3]
@@ -136,26 +136,11 @@ ClarinetScore = [
 [:Bb3, blanche],[:rest, noire],
 ]
 
-#composition = [GrandPianoRightHandScore]
-
-composition = [GrandPianoRightHandScore,GrandPianoLeftHandScore]
-composition2 = [ClarinetScore]
-#ClarinetScore
-
-compositions = [GrandPianoRightHandScore,GrandPianoLeftHandScore ,ClarinetScore]
-composition2 = [GrandPianoRightHandScore,GrandPianoLeftHandScore]
-composition = [ClarinetScore]
-#ClarinetScore
-comment do
-live_loop :tick do
-  sleep base_unit
-end
-end
 
 def PlayMelody(melody)
   for i in 0 ... melody.size
     play melody[i][0]
-    sleep melody[i][1] 
+    sleep melody[i][1]
   end
 end
 
@@ -167,34 +152,28 @@ def JoueurAleatoire (compositions)
   end
 end
 
-def Joueur(compositions)
-  playPiano(compositions.shift)
-  playPiano(compositions.shift)
-  playClarinet(compositions.shift)
-end
-
 def playPiano (melody)
   with_fx :level do
     with_synth :tri do
       PlayMelody(melody)
     end
-  end 
+  end
 end
 
 def playClarinet(melody)
    for i in 0 ... melody.size
     synth :fm, note:melody[i][0], amp: 0.5
-    sleep melody[i][1] 
+    sleep melody[i][1]
   end
 end
 
 def playPrettyBell(melody)
  for i in 0 ... melody.size
-    duree = melody[i][1] 
+    duree = melody[i][1]
     tonalite = melody[i][0]
     with_synth :pretty_bell do
       with_fx :wobble do
-        play tonalite, attack: 0.01 , decay: 0, sustain: 0.1 * duree, 
+        play tonalite, attack: 0.01 , decay: 0, sustain: 0.1 * duree,
           release: 0.9*duree-0.01, amp: 1
         sleep duree
       end
@@ -202,21 +181,21 @@ def playPrettyBell(melody)
   end
 end
 
-def playCnoise(melody)
-for i in 0 ... melody.size
-    duree = melody[i][1] 
-    tonalite = melody[i][0]
-    with_synth :cnoise do
-      with_fx :reverb, mix: 0.2 do
-        with_fx :echo, mix: 0.02 do
-          play tonalite, attack: 0, decay: 0, sustain: 0, release: 0.1+(duree/10), amp: rand
-          sleep duree
-        end
-      end
-    end
+def joueur(compositions)
+  in_thread do
+    playPiano(compositions.shift)
+  end
+  in_thread do
+    playPiano(compositions.shift)
+  end
+  in_thread do
+    playClarinet(compositions.shift)
   end
 end
 
 
-playCnoise(GrandPianoRightHandScore)
-#Joueur(compositions)
+#composition = [GrandPianoRightHandScore]
+
+compositions = [GrandPianoRightHandScore,GrandPianoLeftHandScore ,ClarinetScore]
+
+joueur(compositions)
