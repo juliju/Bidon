@@ -1,0 +1,40 @@
+use_synth :tri
+use_bpm 180
+
+RONDE = 4.0
+BLANCHE = RONDE / 2.0
+NOIRE = RONDE / 4.0
+CROCHE = RONDE / 8.0
+DOUBLECROCHE = RONDE / 16.0
+TRIPLECROCHE = RONDE / 32.0
+
+  live_loop :myLiveLoop do
+    sleep 4.0 / 32.0
+  end
+
+
+def playMe(note, duree)
+  if note != nil then
+    play note, release: duree
+  end
+  sync :myLiveLoop
+  sync :myLiveLoop
+  sync :myLiveLoop
+  sync :myLiveLoop
+end
+
+playMe( :E5, CROCHE)
+playMe( :E5, CROCHE)
+playMe( nil, CROCHE)
+playMe( :E5, CROCHE)
+playMe( nil, CROCHE)
+playMe( :C5, CROCHE)
+playMe( :E5, CROCHE)
+playMe( nil, CROCHE)
+playMe( :G5, CROCHE)
+playMe( nil, CROCHE)
+playMe( nil, CROCHE)
+playMe( nil, CROCHE)
+playMe( :G4, CROCHE)
+playMe( nil, CROCHE)
+

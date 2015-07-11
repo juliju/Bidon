@@ -1,68 +1,103 @@
 # Exemple 1 :code imperatif
 base_unit = 4
 use_synth :tri
-use_bpm 160
+use_bpm 120
 
 
-
-ronde = base_unit
-blanche = ronde / 2.0
-noire = ronde / 4.0
-croche = ronde / 8.0
-doublecroche = ronde / 16.0
-
-accord = [:c4,:g4]
-noteB5 = [:b5]
-noteE6 =[:e6]
-silence = :rest
-
-melody  = [[noteB5,croche], [noteE6,blanche], [silence,noire], [accord,ronde]]
-melody2 = [[silence,noire],[accord,ronde],[noteB5,croche], [noteE6,blanche]]
+  live_loop :TRIPLECROCHE do
+    cueTick = 4.0 / 32.0
+    sleep cueTick
+  end
 
 
-# piano_main_droite = [:C5,:D5,:Bb4,:G4,:A4,:F4,
-#   :C4, :D4, :Bb3,:G3,:A3, :F3,
-#   :C3,:D3, :Bb2,:G2,:Gb2,:F2,:rest,[:F4, :A3],:rest,
-#   :rest,[:D3, :F3],:rest,:D3, :Ab3]
+RONDE = 4.0
+BLANCHE = RONDE / 2.0
+NOIRE = RONDE / 4.0
+CROCHE = RONDE / 8.0
+DOUBLECROCHE = RONDE / 16.0
+TRIPLECROCHE = RONDE / 32.0
+
+def wait_TRIPLE_CROCHE()
+  sync :TRIPLECROCHE
+end
+
+def wait_DOUBLECROCHE()
+  wait_TRIPLE_CROCHE()
+  wait_TRIPLE_CROCHE()
+end
+
+def wait_CROCHE()
+  wait_DOUBLECROCHE()
+  wait_DOUBLECROCHE()
+end
+
+def wait_NOIRE()
+  wait_CROCHE()
+  wait_CROCHE()
+end
+
+def wait_BLANCHE()
+  wait_NOIRE()
+  wait_NOIRE()
+end
+
+def wait_RONDE()
+  wait_BLANCHE()
+  wait_BLANCHE()
+end
+
+
+def mySweetSleep(duree)
+
+  puts duree
+  case duree
+  when RONDE then wait_RONDE()
+  when BLANCHE then wait_BLANCHE()
+  when NOIRE then wait_NOIRE()
+  when CROCHE then wait_CROCHE()
+  when DOUBLECROCHE then wait_DOUBLECROCHE()
+  when TRIPLECROCHE then wait_TRIPLECROCHE()
+  end
+end
 
 
 
 GrandPianoRightHandScore = [
 
 #Bar 1
-[:C5, croche], [:D5, croche],
-[:Bb4, croche], [:G4, noire],
-[:A4, croche],[:F4, noire],
+[:C5, CROCHE], [:D5, CROCHE],
+[:Bb4, CROCHE], [:G4, NOIRE],
+[:A4, CROCHE],[:F4, NOIRE],
 
 #Bar 2
-[:C4, croche],[:D4, croche],
-[:Bb3, croche],[:G3, noire],
-[:A3, croche],[:F3, noire],
+[:C4, CROCHE],[:D4, CROCHE],
+[:Bb3, CROCHE],[:G3, NOIRE],
+[:A3, CROCHE],[:F3, NOIRE],
 
 #Bar 3
-[:C3, croche],[:D3, croche],
-[:Bb2, croche],[:G2,noire],
-[:A2, croche],[:G2, croche],
-[:Gb2, croche],
+[:C3, CROCHE],[:D3, CROCHE],
+[:Bb2, CROCHE],[:G2,NOIRE],
+[:A2, CROCHE],[:G2, CROCHE],
+[:Gb2, CROCHE],
 
 #Bar 4
-[:F2, noire],[:rest, noire],
-[[:F4, :A3], noire], [:rest, noire],
+[:F2, NOIRE],[:rest, NOIRE],
+[[:F4, :A3], NOIRE], [:rest, NOIRE],
 
 #Bar 5
-[:rest, noire], [[:D3, :F3], noire],
-[:rest, noire],[[:D3, :Ab3], noire],
+[:rest, NOIRE], [[:D3, :F3], NOIRE],
+[:rest, NOIRE],[[:D3, :Ab3], NOIRE],
 
 #Bar 6
-[:rest, noire],[[:Eb3, :G3], noire],
-[:rest, noire],[[:D3, :F4], noire],
+[:rest, NOIRE],[[:Eb3, :G3], NOIRE],
+[:rest, NOIRE],[[:D3, :F4], NOIRE],
 
 #Bar 7
-[:rest, noire],[[:Bb3, :D3], noire],
-[:rest, noire],[[:A3, :Eb3], noire],
+[:rest, NOIRE],[[:Bb3, :D3], NOIRE],
+[:rest, NOIRE],[[:A3, :Eb3], NOIRE],
 
 #Bar 8
-[:rest, noire],[[:D3, :F3], noire],
+[:rest, NOIRE],[[:D3, :F3], NOIRE],
 
 ]
 
@@ -70,33 +105,33 @@ GrandPianoRightHandScore = [
 GrandPianoLeftHandScore = [
 
 #Bar 1
-[:rest, ronde],
+[:rest, RONDE],
 
 #Bar 2
-[:rest, ronde],
+[:rest, RONDE],
 
 #Bar 3
-[:rest, ronde],
+[:rest, RONDE],
 
 #Bar 4
-[:rest, blanche],
-[:F2, noire],
-[:rest, noire],
+[:rest, BLANCHE],
+[:F2, NOIRE],
+[:rest, NOIRE],
 
 #Bar 5
-[:Bb1, noire],[:rest, noire],
-[:F2, noire],[:rest, noire],
+[:Bb1, NOIRE],[:rest, NOIRE],
+[:F2, NOIRE],[:rest, NOIRE],
 
 #Bar 6
-[:Eb2, noire],[:rest, noire],
-[:D2, noire],[:rest, noire],
+[:Eb2, NOIRE],[:rest, NOIRE],
+[:D2, NOIRE],[:rest, NOIRE],
 
 #Bar 7
-[:F2, noire],[:rest, noire],
-[:F2, noire],[:rest, noire],
+[:F2, NOIRE],[:rest, NOIRE],
+[:F2, NOIRE],[:rest, NOIRE],
 
 #Bar 8
-[:Bb1, noire],[:rest, noire],
+[:Bb1, NOIRE],[:rest, NOIRE],
 
 ]
 
@@ -104,36 +139,37 @@ GrandPianoLeftHandScore = [
 ClarinetScore = [
 
 #Bar 1
-[:rest, ronde],
+[:rest, RONDE],
 
 #Bar 2
-[:rest, ronde],
+[:rest, RONDE],
 
 #Bar 3
-[:rest, ronde],
+[:rest, RONDE],
 
 #Bar 4
-[:rest, blanche],[:rest, noire],
-[:C3, croche],[:Cs3, croche],
+[:rest, BLANCHE],[:rest, NOIRE],
+[:C3, CROCHE],[:Cs3, CROCHE],
 
 #Bar 5
 
-[:D3,croche],[:Bb3,noire],
-[:D3,croche],[:Bb3,noire],
-[:D3,croche],[:Bb3,croche + blanche],
+[:D3,CROCHE],[:Bb3,NOIRE],
+[:D3,CROCHE],[:Bb3,NOIRE],
+[:D3,CROCHE],[:Bb3,CROCHE],
 
 #Bar 6
-# Tied above [:Bb3, blanche],
-[:Bb3, croche],[:Bb3, croche],
-[:C4, croche],[:Cs4, croche],
+# Tied above [:Bb3, BLANCHE],
+[:Bb3, BLANCHE],
+[:Bb3, CROCHE],[:Bb3, CROCHE],
+[:C4, CROCHE],[:Cs4, CROCHE],
 
 #Bar 7
-[:D4, croche],[:Bb3, croche],
-[:C4, croche],[:D4, noire],
-[:A3, croche],[:C4, noire],
+[:D4, CROCHE],[:Bb3, CROCHE],
+[:C4, CROCHE],[:D4, NOIRE],
+[:A3, CROCHE],[:C4, NOIRE],
 
 #Bar 8
-[:Bb3, blanche],[:rest, noire],
+[:Bb3, BLANCHE]
 ]
 
 
@@ -141,8 +177,12 @@ def PlayMelody(melody)
   for i in 0 ... melody.size
     duree = melody[i][1]
     tonalite = melody[i][0]
-    play tonalite, release: duree
-    sleep duree
+     if tonalite.kind_of?(Array) then
+      play_chord tonalite, release: duree
+    else
+      play tonalite, release: duree
+    end
+    mySweetSleep(duree) 
   end
 end
 
@@ -167,7 +207,7 @@ def playClarinet(melody)
     duree = melody[i][1]
     tonalite = melody[i][0]
     synth :fm, note:tonalite, amp: 0.5, release: duree
-    sleep melody[i][1]
+    mySweetSleep melody[i][1]
   end
 end
 
@@ -179,7 +219,7 @@ def playPrettyBell(melody)
       with_fx :wobble do
         play tonalite, attack: 0.01 , decay: 0, sustain: 0.1 * duree,
           release: 0.9*duree-0.01, amp: 1
-        sleep duree
+        mySweetSleep duree
       end
     end
   end
