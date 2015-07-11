@@ -139,8 +139,10 @@ ClarinetScore = [
 
 def PlayMelody(melody)
   for i in 0 ... melody.size
-    play melody[i][0]
-    sleep melody[i][1]
+    duree = melody[i][1]
+    tonalite = melody[i][0]
+    play tonalite, release: duree
+    sleep duree
   end
 end
 
@@ -162,7 +164,9 @@ end
 
 def playClarinet(melody)
    for i in 0 ... melody.size
-    synth :fm, note:melody[i][0], amp: 0.5
+    duree = melody[i][1]
+    tonalite = melody[i][0]
+    synth :fm, note:tonalite, amp: 0.5, release: duree
     sleep melody[i][1]
   end
 end
@@ -193,8 +197,16 @@ def joueur(compositions)
   end
 end
 
+def joueur2(composition)
+  in_thread do
+    playPiano(composition.choose)
+  end
+end
 
-#composition = [GrandPianoRightHandScore]
+ClarinetScore
+
+
+composition = [GrandPianoRightHandScore]
 
 compositions = [GrandPianoRightHandScore,GrandPianoLeftHandScore ,ClarinetScore]
 
